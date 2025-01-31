@@ -1,6 +1,6 @@
 schema-version: v2.2
 dd-service: uzng-service-status
-team: platform
+team: uanalyze-ng
 application: platform-sample-app
 description: Template service for Go
 tier: "4"
