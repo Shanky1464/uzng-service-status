@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/stretchr/testify/assert"
-	"uniphore.com/platform-hello-world-go/internal/handler/v1api"
+	"uniphore.com/uzng-service-status/internal/handler/v1api"
 )
 
 func TestValidateName(t *testing.T) {

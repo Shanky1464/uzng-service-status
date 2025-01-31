@@ -1,7 +1,7 @@
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
-  name: hello-world-go-oidc
+  name: uzng-service-status-oidc
   annotations:
     kubernetes.io/ingress.class: kong
 plugin: openid-connect

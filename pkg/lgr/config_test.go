@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"uniphore.com/platform-hello-world-go/pkg/lgr"
+	"uniphore.com/uzng-service-status/pkg/lgr"
 )
 
 func TestLoggerConfig(t *testing.T) {

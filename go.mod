@@ -1,4 +1,4 @@
-module uniphore.com/platform-hello-world-go
+module uniphore.com/uzng-service-status
 
 go 1.21
 

@@ -7,7 +7,7 @@ name: Platform CI/CD
   workflow_call:
 jobs:
   CI:
-    if: github.repository == 'uniphore/platform-hello-world-go'
+    if: github.repository == 'uniphore/uzng-service-status'
     uses: uniphore/platform-github-actions/.github/workflows/ci.yml@main
     secrets: inherit
     # Custom values, uncomment to enable:

@@ -1,6 +1,6 @@
-# platform-hello-world-go
+# uzng-service-status
 
-[![Platform CI/CD](https://github.com/uniphore/platform-hello-world-go/actions/workflows/cicd.yml/badge.svg)](https://github.com/uniphore/platform-hello-world-go/actions/workflows/cicd.yml)
+[![Platform CI/CD](https://github.com/uniphore/uzng-service-status/actions/workflows/cicd.yml/badge.svg)](https://github.com/uniphore/uzng-service-status/actions/workflows/cicd.yml)
 
 A template for platform services written in Go
 
@@ -102,13 +102,13 @@ garden test
 Test results can be retrieved using:
 
 ```shell
-garden get test-result hello-world-go-image unit
+garden get test-result uzng-service-status-image unit
 ```
 
 ## QA
 
 QA is executed through the Platform CI/CD pipeline, and the outcomes can be accessed on the
-[SonarQube dashboard](https://plat-sonar.uniphoredev.com/dashboard?id=platform-hello-world-go).
+[SonarQube dashboard](https://plat-sonar.uniphoredev.com/dashboard?id=uzng-service-status).
 
 ## Deployment
 

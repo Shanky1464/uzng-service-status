@@ -1,5 +1,5 @@
 schema-version: v2.2
-dd-service: hello-world-go
+dd-service: uzng-service-status
 team: platform
 application: platform-sample-app
 description: Template service for Go
@@ -16,10 +16,10 @@ links:
   - name: Source Code
     type: repo
     provider: github
-    url: https://github.com/uniphore/platform-hello-world-go
+    url: https://github.com/uniphore/uzng-service-status
   - name: Docs
     type: doc
-    url: https://github.com/uniphore/platform-hello-world-go/blob/main/README.md
+    url: https://github.com/uniphore/uzng-service-status/blob/main/README.md
 tags: []
 integrations:
   pagerduty:

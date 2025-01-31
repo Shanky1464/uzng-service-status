@@ -1,6 +1,6 @@
 ---
 kind: Project
-name: hello-world-go
+name: uzng-service-status
 
 variables:
   targetImage: dev

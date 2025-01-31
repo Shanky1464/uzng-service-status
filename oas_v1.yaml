@@ -5,12 +5,12 @@ info:
   version: v1
   title: Platform Hello World Go service API
 servers:
-  - url: https://api.us.cloud.uniphore.com/hello-world-go
+  - url: https://api.us.cloud.uniphore.com/uzng-service-status
     description: Production (US Region)
-  - url: https://api.us.cloud.uniphorestaging.com/hello-world-go
+  - url: https://api.us.cloud.uniphorestaging.com/uzng-service-status
     description: Staging (US Region)
 tags:
-  - name: hello-world-go
+  - name: uzng-service-status
     description: Platform Hello World
   - name: internals
     description: Everything about internal service managament
@@ -19,7 +19,7 @@ paths:
     get:
       summary: Returns Hello World
       tags:
-        - hello-world-go
+        - uzng-service-status
       operationId: getHelloWorld
       parameters:
         - name: name

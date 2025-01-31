@@ -9,8 +9,8 @@ type Metrics = statsd.Client
 func New(conf Config) (*Metrics, error) {
 	client, err := statsd.New(
 		conf.Host,
-		statsd.WithNamespace("hello_world_go"),
-		statsd.WithTags([]string{"app:hello-world-go"}),
+		statsd.WithNamespace("uzng_service_status"),
+		statsd.WithTags([]string{"app:uzng-service-status"}),
 	)
 	return client, err
 }

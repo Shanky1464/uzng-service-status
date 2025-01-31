@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 
-	"uniphore.com/platform-hello-world-go/internal/api/app"
-	"uniphore.com/platform-hello-world-go/internal/handler"
-	"uniphore.com/platform-hello-world-go/internal/handler/v1api"
-	"uniphore.com/platform-hello-world-go/pkg/apm"
-	"uniphore.com/platform-hello-world-go/pkg/lgr"
-	"uniphore.com/platform-hello-world-go/pkg/metrics"
-	"uniphore.com/platform-hello-world-go/pkg/router"
+	"uniphore.com/uzng-service-status/internal/api/app"
+	"uniphore.com/uzng-service-status/internal/handler"
+	"uniphore.com/uzng-service-status/internal/handler/v1api"
+	"uniphore.com/uzng-service-status/pkg/apm"
+	"uniphore.com/uzng-service-status/pkg/lgr"
+	"uniphore.com/uzng-service-status/pkg/metrics"
+	"uniphore.com/uzng-service-status/pkg/router"
 )
 
 const (

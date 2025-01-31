@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"uniphore.com/platform-hello-world-go/internal/api/app"
+	"uniphore.com/uzng-service-status/internal/api/app"
 )
 
 func TestAppConfig(t *testing.T) {

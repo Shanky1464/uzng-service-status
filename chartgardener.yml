@@ -5,8 +5,8 @@ base:
   log:
     level: DEBUG
 app:
-  default_name: hello-world-go
-  default_description: Deployment of hello-world-go service
+  default_name: uzng-service-status
+  default_description: Deployment of uzng-service-status service
   default_chart_version: 0.1.0
   default_app_version: 0.1.0
 repos:

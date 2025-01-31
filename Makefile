@@ -1,4 +1,4 @@
-APP_NAME := $(shell yq .name charts/hello-world-go/Chart.yaml)
+APP_NAME := $(shell yq .name charts/uzng-service-status/Chart.yaml)
 
 OSNAME := $(shell uname -s)
 OSARCH := $(shell uname -m)

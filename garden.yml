@@ -1,8 +1,8 @@
 ---
 kind: Module
 type: container
-name: hello-world-go-image
-image: hello-world-go
+name: uzng-service-status-image
+image: uzng-service-status
 exclude:
   - ./charts
   - ./deploy
@@ -15,7 +15,7 @@ hotReload:
 build:
   targetImage: ${var.targetImage}
   dependencies:
-    - name: hello-world-go-vendor
+    - name: uzng-service-status-vendor
       copy:
         - source: vendor
           target: .
@@ -80,7 +80,7 @@ tasks:
 ---
 kind: Module
 type: exec
-name: hello-world-go-vendor
+name: uzng-service-status-vendor
 exclude:
   - ./charts
   - ./deploy

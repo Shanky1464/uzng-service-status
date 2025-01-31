@@ -1,7 +1,7 @@
 package router
 
 import (
-	"uniphore.com/platform-hello-world-go/pkg/lgr"
+	"uniphore.com/uzng-service-status/pkg/lgr"
 
 	"github.com/gin-gonic/gin"
 	ginlogrus "github.com/toorop/gin-logrus"

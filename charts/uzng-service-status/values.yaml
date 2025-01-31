@@ -25,7 +25,7 @@ imagePullSecrets:
   - name: uniphore-secret
 
 nameOverride: ""
-fullnameOverride: hello-world-go
+fullnameOverride: uzng-service-status
 
 serviceAccount:
   create: false

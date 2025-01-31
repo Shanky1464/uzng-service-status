@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hello-world-go.fullname" . }}
+  name: {{ include "uzng-service-status.fullname" . }}
   labels:
-    {{- include "hello-world-go.labels" . | nindent 4 }}
+    {{- include "uzng-service-status.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount | required "replicaCount required" }}
   selector:
     matchLabels:
-      {{- include "hello-world-go.selectorLabels" . | nindent 6 }}
+      {{- include "uzng-service-status.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "hello-world-go.selectorLabels" . | nindent 8 }}
+        {{- include "uzng-service-status.selectorLabels" . | nindent 8 }}
     spec:
       serviceAccountName: default
       {{- with .Values.imagePullSecrets }}

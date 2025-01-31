@@ -9,8 +9,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/mocktracer"
-	"uniphore.com/platform-hello-world-go/internal/handler"
-	"uniphore.com/platform-hello-world-go/pkg/router"
+	"uniphore.com/uzng-service-status/internal/handler"
+	"uniphore.com/uzng-service-status/pkg/router"
 )
 
 func TestAPM(t *testing.T) {

@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "hello-world-go.fullname" . }}
+  name: {{ include "uzng-service-status.fullname" . }}
   labels:
-    {{- include "hello-world-go.labels" . | nindent 4 }}
+    {{- include "uzng-service-status.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -11,4 +11,4 @@ spec:
       port: 80
       targetPort: {{ .Values.service.port | required "service.port required" }}
   selector:
-    {{- include "hello-world-go.selectorLabels" . | nindent 4 }}
+    {{- include "uzng-service-status.selectorLabels" . | nindent 4 }}

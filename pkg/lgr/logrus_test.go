@@ -13,7 +13,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/sirupsen/logrus/hooks/test"
 	"github.com/stretchr/testify/assert"
-	"uniphore.com/platform-hello-world-go/pkg/lgr"
+	"uniphore.com/uzng-service-status/pkg/lgr"
 )
 
 func TestNewLogger(t *testing.T) {

@@ -7,4 +7,4 @@ patches:
   - path: release.yaml
     target:
       kind: HelmRelease
-      name: hello-world-go
+      name: uzng-service-status

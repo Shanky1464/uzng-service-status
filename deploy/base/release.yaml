@@ -1,12 +1,12 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: hello-world-go
+  name: uzng-service-status
 spec:
-  releaseName: hello-world-go
+  releaseName: uzng-service-status
   chart:
     spec:
-      chart: hello-world-go
+      chart: uzng-service-status
       sourceRef:
         kind: HelmRepository
         name: uniphore-oci-charts
@@ -22,7 +22,7 @@ spec:
     logLevel: INFO
     logTraceCaller: false
     image:
-      id: "registry.uniphore.com/uniphore/hello-world-go:v-be84a4be77"
+      id: "registry.uniphore.com/uniphore/uzng-service-status:v-be84a4be77"
     replicaCount: 3
     ingress:
       hostName: api

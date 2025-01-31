@@ -9,9 +9,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"uniphore.com/platform-hello-world-go/internal/handler/v1api"
-	"uniphore.com/platform-hello-world-go/pkg/metrics"
-	"uniphore.com/platform-hello-world-go/pkg/router"
+	"uniphore.com/uzng-service-status/internal/handler/v1api"
+	"uniphore.com/uzng-service-status/pkg/metrics"
+	"uniphore.com/uzng-service-status/pkg/router"
 )
 
 func TestGetHelloWorldWithNameParam(t *testing.T) {

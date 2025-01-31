@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"uniphore.com/platform-hello-world-go/pkg/metrics"
+	"uniphore.com/uzng-service-status/pkg/metrics"
 )
 
 func TestMetrics(t *testing.T) {

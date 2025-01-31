@@ -1,10 +1,10 @@
 package app
 
 import (
-	"uniphore.com/platform-hello-world-go/pkg/apm"
-	"uniphore.com/platform-hello-world-go/pkg/lgr"
-	"uniphore.com/platform-hello-world-go/pkg/metrics"
-	"uniphore.com/platform-hello-world-go/pkg/router"
+	"uniphore.com/uzng-service-status/pkg/apm"
+	"uniphore.com/uzng-service-status/pkg/lgr"
+	"uniphore.com/uzng-service-status/pkg/metrics"
+	"uniphore.com/uzng-service-status/pkg/router"
 )
 
 type AppConfig struct {

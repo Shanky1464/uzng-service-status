@@ -1,16 +1,16 @@
 ---
 kind: Module
 type: helm
-name: hello-world-go
+name: uzng-service-status
 
 serviceResource:
   kind: Deployment
-  name: hello-world-go
-  containerModule: hello-world-go-image
+  name: uzng-service-status
+  containerModule: uzng-service-status-image
 
 build:
   dependencies:
-    - name: hello-world-go-image
+    - name: uzng-service-status-image
 
 values:
   appMode: ${var.appMode}
@@ -18,7 +18,7 @@ values:
   logTraceCaller: ${var.logTraceCaller}
 
   image:
-    id: ${modules.hello-world-go-image.outputs.deployment-image-id}
+    id: ${modules.uzng-service-status-image.outputs.deployment-image-id}
 
   replicaCount: ${var.replicas}
   autoscaling:

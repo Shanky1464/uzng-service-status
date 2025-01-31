@@ -10,7 +10,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
-	"uniphore.com/platform-hello-world-go/pkg/router"
+	"uniphore.com/uzng-service-status/pkg/router"
 )
 
 func TestNewGin(t *testing.T) {

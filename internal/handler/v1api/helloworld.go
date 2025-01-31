@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"uniphore.com/platform-hello-world-go/pkg/lgr"
-	"uniphore.com/platform-hello-world-go/pkg/metrics"
+	"uniphore.com/uzng-service-status/pkg/lgr"
+	"uniphore.com/uzng-service-status/pkg/metrics"
 )
 
 type HelloWorld struct {

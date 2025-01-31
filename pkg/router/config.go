@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/caarlos0/env/v9"
-	"uniphore.com/platform-hello-world-go/pkg/apm"
+	"uniphore.com/uzng-service-status/pkg/apm"
 )
 
 type Config struct {

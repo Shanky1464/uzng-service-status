@@ -5,7 +5,7 @@ set +o errexit
 
 export LC_ALL=C
 
-readonly TEMPLATE_NAME='hello-world-go'
+readonly TEMPLATE_NAME='uzng-service-status'
 readonly SERVICE_NAME_PATTERN='^[a-zA-Z]+[a-zA-Z0-9-]*[^-]$'
 readonly CICD_PATH='.github/workflows/cicd.yml'
 readonly README_PATH='README.md'

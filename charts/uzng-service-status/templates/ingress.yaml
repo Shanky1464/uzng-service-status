@@ -1,23 +1,23 @@
 {{- if .Values.ingress.enabled }}
-{{- $fullName := include "hello-world-go.fullname" . -}}
+{{- $fullName := include "uzng-service-status.fullname" . -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "hello-world-go.labels" . | nindent 4 }}
+    {{- include "uzng-service-status.labels" . | nindent 4 }}
   annotations:
     konghq.com/strip-path: "true"
-    konghq.com/plugins: hello-world-go-cors, hello-world-go-claims, hello-world-go-oidc
-    {{- include "hello-world-go.ingress.annotations" . | nindent 4 }}
+    konghq.com/plugins: uzng-service-status-cors, uzng-service-status-claims, uzng-service-status-oidc
+    {{- include "uzng-service-status.ingress.annotations" . | nindent 4 }}
 spec:
   ingressClassName: kong
-  {{- include "hello-world-go.ingress.tls" . | nindent 2 }}
+  {{- include "uzng-service-status.ingress.tls" . | nindent 2 }}
   rules:
     - host: {{ .Values.ingress.hostName }}.{{ .Values.ingress.domainName }}
       http:
         paths:
-          - path: /hello-world-go
+          - path: /uzng-service-status
             pathType: Prefix
             backend:
               service:
