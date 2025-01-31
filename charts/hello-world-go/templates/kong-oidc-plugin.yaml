@@ -1,0 +1,16 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: hello-world-go-oidc
+  annotations:
+    kubernetes.io/ingress.class: kong
+plugin: openid-connect
+config:
+  auth_methods:
+    - bearer
+  bearer_token_param_type:
+    - header
+  issuer: {{ .Values.oidc.issuer }}
+  audience_required:
+    - {{ .Values.oidc.audience }}
+  run_on_preflight: false

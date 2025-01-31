@@ -1,0 +1,32 @@
+---
+kind: Module
+type: helm
+name: hello-world-go
+
+serviceResource:
+  kind: Deployment
+  name: hello-world-go
+  containerModule: hello-world-go-image
+
+build:
+  dependencies:
+    - name: hello-world-go-image
+
+values:
+  appMode: ${var.appMode}
+  logLevel: ${var.logLevel}
+  logTraceCaller: ${var.logTraceCaller}
+
+  image:
+    id: ${modules.hello-world-go-image.outputs.deployment-image-id}
+
+  replicaCount: ${var.replicas}
+  autoscaling:
+    enabled: ${var.autoscaling.enabled}
+
+  ingress:
+    hostName: api-${providers["kubernetes"].config.namespace.name}
+    domainName: ${providers["kubernetes"].config.defaultHostname}
+
+  datadog:
+    env: dev-${replace(local.usernameLowerCase,'.','-')}

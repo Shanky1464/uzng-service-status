@@ -1,0 +1,59 @@
+charts:
+- changed-files:
+  - any-glob-to-any-file:
+    - charts/**/*
+    - chartgardener.yaml
+    - chartgardener.yml
+ci/cd:
+- changed-files:
+  - any-glob-to-any-file:
+    - .github/**/*
+deploy:
+- changed-files:
+  - any-glob-to-any-file:
+    - deploy/**/*
+docker:
+- changed-files:
+  - any-glob-to-any-file:
+    - Dockerfile
+docs:
+- changed-files:
+  - any-glob-to-any-file:
+    - '**/README.md'
+garden:
+- changed-files:
+  - any-glob-to-any-file:
+    - charts/**/garden.yaml
+    - charts/**/garden.yml
+    - '*garden.yml'
+    - '*garden.yaml'
+    - chartgardener.yaml
+    - chartgardener.yml
+go:
+- changed-files:
+  - any-glob-to-any-file:
+    - '*.go'
+    - go.mod
+    - go.sum
+java:
+- changed-files:
+  - any-glob-to-any-file:
+    - '**/*.java'
+    - '**/*.gradle'
+    - gradle*
+    - gradle/**/*
+    - mvnw*
+    - '**/pom.xml'
+python:
+- changed-files:
+  - any-glob-to-any-file:
+    - '**/*.py'
+    - pyproject.toml
+    - requirements*.txt
+    - .coveragerc
+restapi:
+- changed-files:
+  - any-glob-to-any-file:
+    - api/**/*
+    - oas_*.yaml
+    - oas_*.yml

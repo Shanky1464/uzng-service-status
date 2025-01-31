@@ -1,0 +1,20 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: hello-world-go-cors
+plugin: cors
+config:
+  origins:
+    - "*"
+  methods:
+    - GET
+    - POST
+    - HEAD
+    - PUT
+    - PATCH
+    - DELETE
+  headers:
+    - "*"
+  credentials: true
+  max_age: 3600
+  preflight_continue: false

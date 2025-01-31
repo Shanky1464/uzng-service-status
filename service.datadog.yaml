@@ -1,0 +1,26 @@
+schema-version: v2.2
+dd-service: hello-world-go
+team: platform
+application: platform-sample-app
+description: Template service for Go
+tier: "4"
+lifecycle: development
+#type: custom  # auto-detection if not defined
+languages:
+  - go
+contacts:
+  - type: slack
+    name: "#platform-support"
+    contact: https://uniphore.slack.com/archives/C03GREWMBEJ
+links:
+  - name: Source Code
+    type: repo
+    provider: github
+    url: https://github.com/uniphore/platform-hello-world-go
+  - name: Docs
+    type: doc
+    url: https://github.com/uniphore/platform-hello-world-go/blob/main/README.md
+tags: []
+integrations:
+  pagerduty:
+    service-url: https://uniphore.pagerduty.com/service-directory/PPAMNCE

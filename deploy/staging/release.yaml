@@ -1,0 +1,12 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: hello-world-go
+spec:
+  releaseName: hello-world-go
+  targetNamespace: platform
+  values:
+    datadog:
+      env: staging
+    oidc:
+      issuer: https://dev-g2j5mu2z.us.auth0.com/.well-known/openid-configuration

@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hello-world-go.fullname" . }}
+  labels:
+    {{- include "hello-world-go.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount | required "replicaCount required" }}
+  selector:
+    matchLabels:
+      {{- include "hello-world-go.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "hello-world-go.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: default
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.id }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: APP_PORT
+              value: {{ .Values.service.port | quote }}
+            - name: APP_MODE
+              value: {{ .Values.appMode }}
+            - name: LOG_LEVEL
+              value: {{ .Values.logLevel }}
+            - name: LOG_TRACE_CALLER
+              value: {{ .Values.logTraceCaller | quote }}
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port | required "service.port required" }}
+          startupProbe:
+            httpGet:
+              path: /health/liveness
+              port: http
+            {{- if eq .Values.appMode "prod" }}
+            initialDelaySeconds: 2
+            {{- else }}
+            initialDelaySeconds: 10
+            {{- end }}
+            periodSeconds: 1
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /health/readiness
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health/liveness
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3

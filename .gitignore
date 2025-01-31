@@ -1,0 +1,50 @@
+# IDE & editors
+.idea/
+*.iml
+*~
+*.swp
+*.swo
+.vscode/
+.ycm_extra_conf.py
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage/
+coverage*.html
+coverage*.json
+coverage*.xml
+#report.xml
+#gosec.csv
+#gosec.html
+#gosec.json
+
+# Logs
+*.log
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# Garden
+.garden

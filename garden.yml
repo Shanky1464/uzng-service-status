@@ -1,0 +1,89 @@
+---
+kind: Module
+type: container
+name: hello-world-go-image
+image: hello-world-go
+exclude:
+  - ./charts
+  - ./deploy
+
+hotReload:
+  sync:
+    - source: .
+      target: /app
+
+build:
+  targetImage: ${var.targetImage}
+  dependencies:
+    - name: hello-world-go-vendor
+      copy:
+        - source: vendor
+          target: .
+
+tests:
+  - name: unit
+    command:
+      - go
+      - test
+      - -v
+      - -short
+      - -tags=musl,unit
+      - -covermode=count
+      - -coverprofile=/coverage_unit.out
+      - ./...
+    env:
+      APP_MODE: test
+      LOG_LEVEL: DEBUG
+    volumes:
+      - name: test-reports
+        containerPath: /test-reports
+    artifacts:
+      - source: /coverage_unit.out
+        target: test-reports
+
+  - name: integration
+    command:
+      - go
+      - test
+      - -v
+      - -short
+      - -p=1
+      - -tags=musl,integration
+      - -covermode=count
+      - -coverprofile=/coverage_integration.out
+      - ./...
+    env:
+      APP_MODE: test
+      LOG_LEVEL: DEBUG
+    volumes:
+      - name: test-reports
+        containerPath: /test-reports
+    artifacts:
+      - source: /coverage_integration.out
+        target: test-reports
+---
+kind: Module
+type: exec
+name: mocks
+local: true
+include:
+  - ./pkg/
+build:
+  command:
+    - echo Rebuilding mocks &&
+    - rm -rf pkg/mocks &&
+    - mockery --dir=pkg --output=pkg/mocks --all --keeptree
+tasks:
+  - name: rebuild-mocks
+    command:
+      - echo OK
+---
+kind: Module
+type: exec
+name: hello-world-go-vendor
+exclude:
+  - ./charts
+  - ./deploy
+build:
+  command:
+    - go mod vendor

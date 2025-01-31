@@ -1,0 +1,127 @@
+---
+openapi: 3.0.3
+info:
+  description: Platform Hello World Go service API
+  version: v1
+  title: Platform Hello World Go service API
+servers:
+  - url: https://api.us.cloud.uniphore.com/hello-world-go
+    description: Production (US Region)
+  - url: https://api.us.cloud.uniphorestaging.com/hello-world-go
+    description: Staging (US Region)
+tags:
+  - name: hello-world-go
+    description: Platform Hello World
+  - name: internals
+    description: Everything about internal service managament
+paths:
+  "/v1/hello":
+    get:
+      summary: Returns Hello World
+      tags:
+        - hello-world-go
+      operationId: getHelloWorld
+      parameters:
+        - name: name
+          in: query
+          description: A required name parameter
+          required: true
+          schema:
+            type: string
+        - name: lastname
+          in: query
+          description: An optional last name parameter
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A JSON object containing the hello world
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HelloWorld"
+              examples:
+                HelloWorldWithNameOnly:
+                  $ref: "#/components/examples/HelloWorldWithName"
+                HelloWorldWithLastName:
+                  $ref: "#/components/examples/HelloWorldWithLastName"
+        "422":
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                RequestValidationError:
+                  $ref: "#/components/examples/RequestValidationError"
+  "/health/liveness":
+    get:
+      summary: Internal endpoint for checking the service's liveness health
+      tags:
+        - internals
+      operationId: getHealthLiveness
+      responses:
+        "200":
+          description: Ok response if service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [ok]
+              example:
+                status: ok
+  "/health/readiness":
+    get:
+      summary: Internal endpoint for checking the service's readiness health
+      tags:
+        - internals
+      operationId: getHealthReadiness
+      responses:
+        "200":
+          description: Ok response if service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [ok]
+              example:
+                status: ok
+components:
+  schemas:
+    HelloWorld:
+      type: object
+      properties:
+        name:
+          type: string
+        lastname:
+          type: string
+      required:
+        - name
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+      required:
+        - code
+        - message
+  examples:
+    HelloWorldWithName:
+      value:
+        helloworld: name
+    HelloWorldWithLastName:
+      value:
+        helloworld: name lastname
+    RequestValidationError:
+      value:
+        code: 422
+        message: Request validation error

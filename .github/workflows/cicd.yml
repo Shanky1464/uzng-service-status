@@ -1,0 +1,28 @@
+---
+name: Platform CI/CD
+"on":
+  push:
+    branches-ignore:
+      - dependabot/**
+  workflow_call:
+jobs:
+  CI:
+    if: github.repository == 'uniphore/platform-hello-world-go'
+    uses: uniphore/platform-github-actions/.github/workflows/ci.yml@main
+    secrets: inherit
+    # Custom values, uncomment to enable:
+    # with:
+    #   oas-files: '["oas_v1.yaml", "api.yml"]'  # Default: all YAML files with 'oas' or 'api' in the filename
+    #   sonarqube-quality-gate:                  # Default: true
+    #   security-sca:                            # Default: false
+    #   security-sca-exclude-dirs:               # Default:
+  CD:
+    if: >
+      github.event_name == 'push'
+      && ! startsWith(github.event.head_commit.message, '[github-ci]')
+      && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    needs: CI
+    uses: uniphore/platform-github-actions/.github/workflows/cd.yml@main
+    secrets: inherit
+    with:
+      images-map: ${{ needs.CI.outputs.images-map }}

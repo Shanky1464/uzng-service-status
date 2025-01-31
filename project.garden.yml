@@ -1,0 +1,48 @@
+---
+kind: Project
+name: hello-world-go
+
+variables:
+  targetImage: dev
+
+  appMode: debug
+  logLevel: DEBUG
+  logTraceCaller: true
+
+  replicas: 1
+  autoscaling:
+    enabled: false
+
+  kubernetes-providers-config:
+    context: arn:aws:eks:us-east-2:346163573116:cluster/uniphore-dev-us-eks-platform
+    defaultHostname: us.cloud.uniphoredev.com
+    buildMode: cluster-buildkit
+    imagePullSecrets:
+      - name: uniphore-secret
+      - name: dockerhub-secret
+    deploymentRegistry:
+      hostname: registry.uniphore.com
+      namespace: uniphore
+
+defaultEnvironment: dev
+environments:
+  - name: dev
+    defaultNamespace: ${replace(local.usernameLowerCase,'.','-')}
+
+  - name: ci
+    defaultNamespace: ${project.name}-${local.env.GITHUB_RUN_ID}
+
+  - name: build
+    defaultNamespace: build
+    variables:
+      targetImage: app
+
+providers:
+  - name: kubernetes
+    environments:
+      - dev
+      - ci
+      - build
+    $merge: ${var.kubernetes-providers-config}
+    namespace:
+      name: ${environment.namespace}
